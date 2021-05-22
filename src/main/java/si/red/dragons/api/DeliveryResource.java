@@ -4,6 +4,7 @@ import si.red.dragons.dtos.DeliveryDTO;
 import si.red.dragons.entity.Account;
 import si.red.dragons.entity.Delivery;
 import si.red.dragons.entity.Transfer;
+import si.red.dragons.enums.DeliveryStatusEnum;
 import si.red.dragons.mappers.DeliveryMapper;
 
 import javax.annotation.security.RolesAllowed;
@@ -16,6 +17,7 @@ import javax.ws.rs.core.SecurityContext;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Path("/delivery")
 public class DeliveryResource {
@@ -33,7 +35,11 @@ public class DeliveryResource {
             deliveries.addAll(tDeliveries);
         }
 
-        return Response.ok(deliveries).build();
+        List<Delivery> pendingDeliveries = deliveries.stream()
+                .filter(d -> d.getStatus() == DeliveryStatusEnum.PENDING)
+                .collect(Collectors.toList());
+
+        return Response.ok(pendingDeliveries).build();
     }
 
 
@@ -44,7 +50,6 @@ public class DeliveryResource {
     @RolesAllowed({"user"})
     public Response create(@Context SecurityContext sc, DeliveryDTO deliveryDTO) {
         Delivery delivery = DeliveryMapper.INSTANCE.deliveryDTOToDelivery(deliveryDTO);
-        String email = sc.getUserPrincipal().getName();
 
         delivery.save();
         return Response.ok().build();
