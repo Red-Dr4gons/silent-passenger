@@ -7,7 +7,7 @@ import {ProfileComponent} from "./profile/profile.component";
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'ride', component: RideComponent},
+  {path: 'rides', component: RideComponent},
   {path: 'profile', component: ProfileComponent},
 ];
 
