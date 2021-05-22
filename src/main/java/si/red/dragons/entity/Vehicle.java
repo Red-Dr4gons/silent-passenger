@@ -12,15 +12,21 @@ public class Vehicle extends PanacheEntityExtended {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idVehicle;
+
     @Convert(converter = CarTypeEnum.JPAConverter.class)
     private CarTypeEnum carType;
+
     @Convert(converter = FuelTypeEnum.JPAConverter.class)
     private CarTypeEnum fuelType;
+
     private Float fuelConsumption;
+
     @Convert(converter = ElectricLocationEnum.JPAConverter.class)
     private ElectricLocationEnum electricLocationEnum;
-    @ManyToOne
-    private User idUser;
+
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Account.class)
+    @JoinColumn(name = "idAccount")
+    private Account account;
 
     public Long getIdVehicle() {
         return idVehicle;
@@ -62,11 +68,11 @@ public class Vehicle extends PanacheEntityExtended {
         this.electricLocationEnum = electricLocationEnum;
     }
 
-    public User getIdUser() {
-        return idUser;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setIdUser(User idUser) {
-        this.idUser = idUser;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }

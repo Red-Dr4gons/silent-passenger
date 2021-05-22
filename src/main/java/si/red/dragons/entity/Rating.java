@@ -10,9 +10,10 @@ public class Rating extends PanacheEntityExtended {
     private Long idRating;
     private Integer value;
     private Integer comment;
-    
-    @ManyToOne
-    private User idUser;
+
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Account.class)
+    @JoinColumn(name = "idAccount")
+    private Account account;
 
     public Long getIdRating() {
         return idRating;
@@ -38,11 +39,11 @@ public class Rating extends PanacheEntityExtended {
         this.comment = comment;
     }
 
-    public User getIdUser() {
-        return idUser;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setIdUser(User idUser) {
-        this.idUser = idUser;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }

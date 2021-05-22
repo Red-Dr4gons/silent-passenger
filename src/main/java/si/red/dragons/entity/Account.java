@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class User extends PanacheEntityExtended {
+public class Account extends PanacheEntityExtended {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUser;
+    private Long idAccount;
     private String name;
     private String surname;
     private String phoneNumber;
@@ -16,18 +16,18 @@ public class User extends PanacheEntityExtended {
     private String email;
     private String password;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "account", cascade = CascadeType.ALL)
     private Set<Rating> ratings;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "account", cascade = CascadeType.ALL)
     private Set<Vehicle> vehicles;
 
-    public Long getIdUser() {
-        return idUser;
+    public Long getIdAccount() {
+        return idAccount;
     }
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+    public void setIdAccount(Long idUser) {
+        this.idAccount = idUser;
     }
 
     public String getName() {
