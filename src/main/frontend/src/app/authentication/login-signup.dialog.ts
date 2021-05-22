@@ -28,7 +28,7 @@ export class LoginSignupDialog {
     name: new FormControl('', Validators.required),
     surname: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
-    phonenumber: new FormControl('', Validators.required)
+    phoneNumber: new FormControl('', Validators.required)
   })
 
 
