@@ -1,8 +1,15 @@
 quarkus:
   datasource:
-    db-kind: h2
+    db-kind: postgresql
+    username: ${DB.USER}
+    password: ${DB.PASSWORD}
     jdbc:
-      url: jdbc:h2:tcp://localhost/mem:default
+      url: ${DB.URL}
+      driver: org.postgresql.Driver
   hibernate-orm:
     database:
-      generation: drop-and-create
+      generation: update
+  resteasy:
+    path: /api
+  swagger-ui:
+    path: /api/docs
