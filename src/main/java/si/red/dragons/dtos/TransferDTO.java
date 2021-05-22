@@ -1,21 +1,51 @@
 package si.red.dragons.dtos;
 
-import javax.persistence.Column;
+import si.red.dragons.entity.Vehicle;
+
 import java.time.LocalDateTime;
 
 public class TransferDTO {
-    private String startLocation;
-    private String endLocation;
-    private Float price;
-    private String description;
+    private String startLocAddr;
+    private String startLocCity;
+    private String startLocPostalCode;
     private LocalDateTime startTime;
+    private String endLocAddr;
+    private String endLocCity;
+    private String endLocPostalCode;
+    private Vehicle vehicle;
+    private String description;
+    private Float price;
+
+    public String getStartLocAddr() {
+        return startLocAddr;
+    }
+
+    public String getStartLocCity() {
+        return startLocCity;
+    }
+
+    public String getStartLocPostalCode() {
+        return startLocPostalCode;
+    }
 
     public String getStartLocation() {
-        return startLocation;
+        return startLocAddr + ", " + startLocCity + " " + startLocPostalCode;
+    }
+
+    public String getEndLocAddr() {
+        return endLocAddr;
+    }
+
+    public String getEndLocCity() {
+        return endLocCity;
+    }
+
+    public String getEndLocPostalCode() {
+        return endLocPostalCode;
     }
 
     public String getEndLocation() {
-        return endLocation;
+        return endLocAddr + ", " + endLocCity + " " + endLocPostalCode;
     }
 
     public Float getPrice() {
@@ -30,12 +60,30 @@ public class TransferDTO {
         return startTime;
     }
 
-    public void setStartLocation(String startLocation) {
-        this.startLocation = startLocation;
+    public Vehicle getVehicle() { return vehicle; }
+
+    public void setStartLocAddr(String startLocAddr) {
+        this.startLocAddr = startLocAddr;
     }
 
-    public void setEndLocation(String endLocation) {
-        this.endLocation = endLocation;
+    public void setStartLocCity(String startLocCity) {
+        this.startLocCity = startLocCity;
+    }
+
+    public void setStartLocPostalCode(String startLocPostalCode) {
+        this.startLocPostalCode = startLocPostalCode;
+    }
+
+    public void setEndLocAddr(String endLocAddr) {
+        this.endLocAddr = endLocAddr;
+    }
+
+    public void setEndLocCity(String endLocCity) {
+        this.endLocCity = endLocCity;
+    }
+
+    public void setEndLocPostalCode(String endLocPostalCode) {
+        this.endLocPostalCode = endLocPostalCode;
     }
 
     public void setPrice(Float price) {
@@ -48,5 +96,9 @@ public class TransferDTO {
 
     public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 }

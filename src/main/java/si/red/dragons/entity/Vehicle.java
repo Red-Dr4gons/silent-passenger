@@ -15,20 +15,15 @@ public class Vehicle extends PanacheEntityExtended {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idVehicle;
 
-    @Column(name = "CAR_TYPE")
-    @Convert(converter = CarTypeEnum.JPAConverter.class)
-    private CarTypeEnum carType;
+    @Column(name = "PLATE")
+    private String plate;
 
     @Column(name = "FUEL_TYPE")
     @Convert(converter = FuelTypeEnum.JPAConverter.class)
-    private CarTypeEnum fuelType;
+    private FuelTypeEnum fuelType;
 
     @Column(name = "FUEL_CONSUMPTION")
     private Float fuelConsumption;
-
-    @Column(name = "ELECTRIC_LOCATION")
-    @Convert(converter = ElectricLocationEnum.JPAConverter.class)
-    private ElectricLocationEnum electricLocationEnum;
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Account.class)
     @JoinColumn(name = "ID_ACCOUNT")
@@ -42,19 +37,19 @@ public class Vehicle extends PanacheEntityExtended {
         this.idVehicle = idVehicle;
     }
 
-    public CarTypeEnum getCarType() {
-        return carType;
+    public String getPlate() {
+        return plate;
     }
 
-    public void setCarType(CarTypeEnum carType) {
-        this.carType = carType;
+    public void setPlate(String plate) {
+        this.plate = plate;
     }
 
-    public CarTypeEnum getFuelType() {
+    public FuelTypeEnum getFuelType() {
         return fuelType;
     }
 
-    public void setFuelType(CarTypeEnum fuelType) {
+    public void setFuelType(FuelTypeEnum fuelType) {
         this.fuelType = fuelType;
     }
 
@@ -64,14 +59,6 @@ public class Vehicle extends PanacheEntityExtended {
 
     public void setFuelConsumption(Float fuelConsumption) {
         this.fuelConsumption = fuelConsumption;
-    }
-
-    public ElectricLocationEnum getElectricLocationEnum() {
-        return electricLocationEnum;
-    }
-
-    public void setElectricLocationEnum(ElectricLocationEnum electricLocationEnum) {
-        this.electricLocationEnum = electricLocationEnum;
     }
 
     public Account getAccount() {

@@ -1,19 +1,17 @@
 package si.red.dragons.dtos;
 
-import si.red.dragons.enums.CarTypeEnum;
-import si.red.dragons.enums.ElectricLocationEnum;
+import si.red.dragons.enums.FuelTypeEnum;
 
 public class VehicleDTO {
-    private CarTypeEnum cartype;
-    private CarTypeEnum fuelType;
+    private String plate;
+    private FuelTypeEnum fuelType;
     private Float fuelConsumption;
-    private ElectricLocationEnum electricLocationEnum;
 
-    public CarTypeEnum getCartype() {
-        return cartype;
+    public String getPlate() {
+        return plate;
     }
 
-    public CarTypeEnum getFuelType() {
+    public FuelTypeEnum getFuelType() {
         return fuelType;
     }
 
@@ -21,23 +19,15 @@ public class VehicleDTO {
         return fuelConsumption;
     }
 
-    public ElectricLocationEnum getElectricLocationEnum() {
-        return electricLocationEnum;
+    public void setPlate(String plate) {
+        this.plate = plate;
     }
 
-    public void setCartype(CarTypeEnum cartype) {
-        this.cartype = cartype;
-    }
-
-    public void setFuelType(CarTypeEnum fuelType) {
+    public void setFuelType(FuelTypeEnum fuelType) {
         this.fuelType = fuelType;
     }
 
     public void setFuelConsumption(Float fuelConsumption) {
         this.fuelConsumption = fuelConsumption;
-    }
-
-    public void setElectricLocationEnum(ElectricLocationEnum electricLocationEnum) {
-        this.electricLocationEnum = electricLocationEnum;
     }
 }

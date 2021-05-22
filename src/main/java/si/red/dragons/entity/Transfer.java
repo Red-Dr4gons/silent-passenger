@@ -51,6 +51,26 @@ public class Transfer extends PanacheEntityExtended {
         return startLocation;
     }
 
+    public String getStartLocAddr() {
+        return startLocation.split(",")[0];
+    }
+
+    public String getStartLocCity() {
+        String cityAndCode = startLocation.split(",")[1];
+        String city = "";
+        for(String token : cityAndCode.split(" ")) {
+            city += token + " ";
+        }
+        return city;
+    }
+
+    public String getStartLocPostalCode() {
+        String cityAndCode = startLocation.split(",")[1];
+        int numOfSplits = cityAndCode.split(" ").length;
+        String code = cityAndCode.split(" ")[numOfSplits - 1];
+        return code;
+    }
+
     public void setStartLocation(String startLocation) {
         this.startLocation = startLocation;
     }
