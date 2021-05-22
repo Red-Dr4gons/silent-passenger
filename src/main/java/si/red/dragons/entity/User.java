@@ -1,9 +1,7 @@
 package si.red.dragons.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class User extends PanacheEntityExtended {
@@ -17,6 +15,12 @@ public class User extends PanacheEntityExtended {
     private String address;
     private String email;
     private String password;
+
+    @OneToMany
+    private Set<Rating> ratings;
+
+    @OneToMany
+    private Set<Vehicle> vehicles;
 
     public Long getIdUser() {
         return idUser;
@@ -72,5 +76,13 @@ public class User extends PanacheEntityExtended {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(Set<Rating> ratings) {
+        this.ratings = ratings;
     }
 }
