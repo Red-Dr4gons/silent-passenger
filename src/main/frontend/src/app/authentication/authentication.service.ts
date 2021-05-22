@@ -46,4 +46,12 @@ export class AuthenticationService {
     localStorage.removeItem('jwt');
     this.token = '';
   }
+
+  getHeaders() {
+    let headers = new HttpHeaders();
+    headers = headers
+      .set('Content-Type', 'application/json')
+      .set('Authorization', 'Bearer ' + this.getToken());
+    return {headers: headers};
+  }
 }

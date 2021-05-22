@@ -7,31 +7,39 @@ import si.red.dragons.mappers.AccountMapper;
 import javax.annotation.security.RolesAllowed;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
+import javax.ws.rs.core.SecurityContext;
 
 @Path("/account")
 public class AccountResource {
     @GET
-    public List<Account> getAll() {
-        return Account.listAll();
-    }
-
-    @GET
-    @Path("/{id}")
     @RolesAllowed({"user"})
-    public Account getById(@PathParam("id") Long accountId) {
-        return Account.findById(accountId);
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public AccountDTO getByEmail(@Context SecurityContext sc) {
+        String email = sc.getUserPrincipal().getName();
+        Account acc = Account.find("email", email).firstResult();
+        return AccountMapper.INSTANCE.accountToAccountDTO(acc);
     }
 
-    @Transactional
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
+    @PUT
+    @RolesAllowed({"user"})
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createAccount(AccountDTO accountDTO){
-        Account account = AccountMapper.INSTANCE.accountDTOToAccount(accountDTO);
-        account.save();
-        return Response.ok().build();
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Response update(@Context SecurityContext sc, AccountDTO accountDTO) {
+        String email = sc.getUserPrincipal().getName();
+        Account acc = Account.find("email", email).firstResult();
+        Account newAccount = AccountMapper.INSTANCE.accountDTOToAccount(accountDTO);
+
+        acc.setName(newAccount.getName());
+        acc.setSurname(newAccount.getSurname());
+        acc.setAddress(newAccount.getAddress());
+        acc.setPhoneNumber(newAccount.getPhoneNumber());
+
+        acc.save();
+        return Response.accepted().build();
     }
 }

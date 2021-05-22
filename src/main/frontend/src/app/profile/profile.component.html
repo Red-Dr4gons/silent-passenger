@@ -1,1 +1,45 @@
-<p>profile works!</p>
+<mat-dialog-content class="mat-typography">
+  <mat-tab-group dynamicHeight>
+    <mat-tab label="Profile">
+      <form (ngSubmit)="update()" [formGroup]="profileForm" novalidate class="pt-5" *ngIf="profileForm">
+        <mat-card>
+          <mat-card-content>
+            <p>
+              <mat-form-field>
+                <input type="text" matInput placeholder="Email" formControlName="email">
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field>
+                <input type="text" matInput placeholder="Name" formControlName="name">
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field>
+                <input type="text" matInput placeholder="Surname" formControlName="surname">
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field>
+                <input type="text" matInput placeholder="Address" formControlName="address">
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field>
+                <input type="text" matInput placeholder="Phone number" formControlName="phoneNumber">
+              </mat-form-field>
+            </p>
+            <p *ngIf="profileError" class="error">
+              {{ profileError }}
+            </p>
+            <div class="button">
+              <button type="submit" mat-button>Update</button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </form>
+    </mat-tab>
+    <mat-tab label="Vehicles">
+    </mat-tab>
+  </mat-tab-group>
+</mat-dialog-content>
