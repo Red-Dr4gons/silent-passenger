@@ -1,5 +1,7 @@
 package si.red.dragons.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -28,8 +30,9 @@ public class Transfer extends PanacheEntityExtended {
     @Column(name = "START_TIME")
     private LocalDateTime startTime;
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Account.class)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_ACCOUNT")
+    @JsonIgnore
     private Account account;
 
     @Column(name = "DELIVERIES")

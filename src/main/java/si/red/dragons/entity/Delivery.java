@@ -1,5 +1,6 @@
 package si.red.dragons.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import si.red.dragons.enums.DeliveryStatusEnum;
 
 import javax.persistence.*;
@@ -28,6 +29,7 @@ public class Delivery extends PanacheEntityExtended {
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Transfer.class)
     @JoinColumn(name = "ID_TRANSFER")
+    @JsonIgnore
     private Transfer transfer;
 
 

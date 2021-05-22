@@ -3,6 +3,7 @@ package si.red.dragons.api;
 import si.red.dragons.dtos.DeliveryDTO;
 import si.red.dragons.entity.Account;
 import si.red.dragons.entity.Delivery;
+import si.red.dragons.entity.Transfer;
 import si.red.dragons.mappers.DeliveryMapper;
 
 import javax.annotation.security.RolesAllowed;
@@ -12,6 +13,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Path("/delivery")
 public class DeliveryResource {
@@ -22,14 +26,14 @@ public class DeliveryResource {
 
         Account account = Account.find("idAccount", idAccount).firstResult();
 
-//        List<Delivery> deliveries = new ArrayList<>();
-//
-//        for (Transfer t : account.getTransfers()) {
-//            Set<Delivery> tDeliveries = t.getDeliveries();
-//            deliveries.addAll(tDeliveries);
-//        }
+        List<Delivery> deliveries = new ArrayList<>();
 
-        return Response.ok(account).build();
+        for (Transfer t : account.getTransfers()) {
+            Set<Delivery> tDeliveries = t.getDeliveries();
+            deliveries.addAll(tDeliveries);
+        }
+
+        return Response.ok(deliveries).build();
     }
 
 
@@ -41,8 +45,6 @@ public class DeliveryResource {
     public Response create(@Context SecurityContext sc, DeliveryDTO deliveryDTO) {
         Delivery delivery = DeliveryMapper.INSTANCE.deliveryDTOToDelivery(deliveryDTO);
         String email = sc.getUserPrincipal().getName();
-
-        //delivery.setAccount(Account.find("email", email).firstResult());
 
         delivery.save();
         return Response.ok().build();
