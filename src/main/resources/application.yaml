@@ -18,5 +18,5 @@ mp:
   jwt:
     verify:
       publickey:
-        location: META-INF/resources/public.pem
+        location: public.pem
       issuer: https://silent-passenger.com
