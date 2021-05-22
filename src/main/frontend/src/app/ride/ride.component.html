@@ -1,27 +1,30 @@
-<mat-card class="card">
-  <mat-card-header class="card-header">
-    <mat-card-title class="card-title">
-      Prevoz: Ljubljana - Koper
-    </mat-card-title>
-  </mat-card-header>
-  <mat-divider></mat-divider>
-  <mat-card-content>
-    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
-      <div fxFlex="40%;">
-<!--        <img class="map" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
-        <div class="map"
-             leaflet
-             (leafletMapReady)="onMapReady($event)"
-             [leafletOptions]="options"
-             [leafletLayersControl]="layersControl">
+<h1>Rides</h1><button mat-raised-button (click)="openAddDialog()" class="add-btn">Driving somewhere?</button>
+
+<div>
+  <mat-card class="card">
+    <mat-card-header class="card-header">
+      <mat-card-title class="card-title">
+        Ljubljana - Koper
+      </mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center">
+        <div fxFlex="40%;">
+          <div class="map"
+               leaflet
+               (leafletMapReady)="onMapReady($event)"
+               [leafletOptions]="options"
+               [leafletLayersControl]="layersControl">
+          </div>
+        </div>
+        <div fxFlex="60%;" class="content">
+          <p>Departure time: </p>
+          <p>Description: </p>
+          <p>Ride info: </p>
+          <p>Rider rating: 5 od 5 zvezdic hura!</p>
         </div>
       </div>
-      <div fxFlex="60%;">
-        <p>Departure time: </p>
-        <p>Description: </p>
-        <p>Ride info: </p>
-        <p>Rider rating: 5 od 5 zvezdic hura!</p>
-      </div>
-    </div>
-  </mat-card-content>
-</mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

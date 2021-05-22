@@ -1,12 +1,23 @@
 .map {
   height: 250px;
-  width: 96%;
-  padding: 10px;
-  float: left;
+  width: 100%;
+}
+
+.column {
+  width: 100%;
+}
+
+h1 {
+  display: inline-block;
+}
+
+.add-btn {
+  float: right;
 }
 
 .content {
-  float: right;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
 .card-header {
@@ -15,7 +26,7 @@
 }
 
 .card-title {
-  padding: 0px;
+  margin: 0px !important;
 }
 
 .card {

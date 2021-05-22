@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {icon, latLng, Map, marker, point, polyline, tileLayer} from "leaflet";
 import {RouteService} from 'src/app/services/route.service';
+import {MatDialog} from "@angular/material/dialog";
+import {AddRideComponent} from "../add-ride/add-ride.component";
 
 @Component({
   selector: 'app-ride',
@@ -79,7 +81,8 @@ export class RideComponent implements OnInit {
   };
 
 
-  constructor(private routeService: RouteService) { }
+  constructor(private routeService: RouteService,
+              public dialog: MatDialog) { }
 
   onMapReady(map: Map) {
     map.fitBounds(this.route.getBounds(), {
@@ -87,6 +90,10 @@ export class RideComponent implements OnInit {
       maxZoom: 12,
       animate: true
     });
+  }
+
+  openAddDialog() {
+    this.dialog.open(AddRideComponent);
   }
 
   private async getInstructionsList(): Promise<void> {
