@@ -7,7 +7,7 @@ import si.red.dragons.entity.Transfer;
 
 @Mapper
 public interface TransferMapper {
-    RatingMapper INSTANCE = Mappers.getMapper(RatingMapper.class);
+    TransferMapper INSTANCE = Mappers.getMapper(TransferMapper.class);
 
     TransferDTO transferToTransferDTO(Transfer transfer);
 

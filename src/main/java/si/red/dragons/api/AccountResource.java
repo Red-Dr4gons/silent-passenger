@@ -10,16 +10,15 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/account")
-public class AccountAPI {
+public class AccountResource {
     @GET
-    @Path("/list")
-    public List<Account> getAll(){
+    public List<Account> getAll() {
         return Account.listAll();
     }
 
     @GET
     @Path("/{id}")
-    public Account getById(@PathParam("id") String acccountId){
+    public Account getById(@PathParam("id") Long acccountId) {
         return Account.findById(acccountId);
     }
 

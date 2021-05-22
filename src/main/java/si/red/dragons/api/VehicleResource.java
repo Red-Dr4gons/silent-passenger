@@ -9,16 +9,15 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/vehicle")
-public class VehicleAPI{
+public class VehicleResource {
     @GET
-    @Path("/list")
-    public List<Vehicle> getAll(){
+    public List<Vehicle> getAll() {
         return Vehicle.listAll();
     }
 
     @GET
     @Path("/{id}")
-    public Vehicle getById(@PathParam("id") String vehicleId){
+    public Vehicle getById(@PathParam("id") String vehicleId) {
         return Vehicle.findById(vehicleId);
     }
 
