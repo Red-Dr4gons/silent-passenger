@@ -38,6 +38,10 @@ public class Account extends PanacheEntityExtended {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "account", cascade = CascadeType.ALL)
     private Set<Vehicle> vehicles;
 
+    @Column(name = "TRANSFERS")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "account", cascade = CascadeType.ALL)
+    private Set<Transfer> transfers;
+
     public Long getIdAccount() {
         return idAccount;
     }

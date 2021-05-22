@@ -4,6 +4,7 @@ import si.red.dragons.dtos.AccountDTO;
 import si.red.dragons.entity.Account;
 import si.red.dragons.mappers.AccountMapper;
 
+import javax.annotation.security.RolesAllowed;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -19,6 +20,7 @@ public class AccountResource {
 
     @GET
     @Path("/{id}")
+    @RolesAllowed({"user"})
     public Account getById(@PathParam("id") Long accountId) {
         return Account.findById(accountId);
     }
