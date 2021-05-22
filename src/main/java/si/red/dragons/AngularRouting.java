@@ -20,22 +20,11 @@ public class AngularRouting extends HttpFilter {
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
-        chain.doFilter(request, response);
 
-        if (response.getStatus() == 404) {
-            String path = request.getRequestURI().substring(
-                    request.getContextPath().length()).replaceAll("[/]+$", "");
-            if (!FILE_NAME_PATTERN.matcher(path).matches()) {
-                // We could not find the resource, i.e. it is not anything known to the server (i.e. it is not a REST
-                // endpoint or a servlet), and does not look like a file so try handling it in the front-end routes
-                // and reset the response status code to 200.
-                try {
-                    response.setStatus(200);
-                    request.getRequestDispatcher("/").forward(request, response);
-                } finally {
-                    response.getOutputStream().close();
-                }
-            }
+        if (!request.getRequestURI().contains("/api")) {
+            req.getRequestDispatcher("/index.html").forward(request, response);
         }
+
+        chain.doFilter(request, response);
     }
 }
