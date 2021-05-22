@@ -1,33 +1,31 @@
 package si.red.dragons.dtos;
 
-import si.red.dragons.entity.Account;
-
 public class RatingDTO {
     private Integer value;
-    private Integer comment;
-    private Account account;
+    private String comment;
+    private String email;
 
     public Integer getValue() {
         return value;
-    }
-
-    public Integer getComment() {
-        return comment;
-    }
-
-    public Account getAccount() {
-        return account;
     }
 
     public void setValue(Integer value) {
         this.value = value;
     }
 
-    public void setComment(Integer comment) {
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
         this.comment = comment;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

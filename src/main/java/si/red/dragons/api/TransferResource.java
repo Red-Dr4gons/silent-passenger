@@ -32,6 +32,8 @@ public class TransferResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response create(TransferDTO transferDTO) {
         Transfer transfer = TransferMapper.INSTANCE.transferDTOTotransfer(transferDTO);
+
+        //TODO add account
         transfer.save();
 
         return Response.ok().build();

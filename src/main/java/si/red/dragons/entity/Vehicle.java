@@ -31,7 +31,7 @@ public class Vehicle extends PanacheEntityExtended {
     private ElectricLocationEnum electricLocationEnum;
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Account.class)
-    @JoinColumn(name = "idAccount")
+    @JoinColumn(name = "ID_ACCOUNT")
     private Account account;
 
     public Long getIdVehicle() {

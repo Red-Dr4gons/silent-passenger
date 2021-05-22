@@ -31,7 +31,7 @@ public class Account extends PanacheEntityExtended {
     private String password;
 
     @Column(name = "RATINGS")
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "account", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountTo", cascade = CascadeType.ALL)
     private Set<Rating> ratings;
 
     @Column(name = "VEHICLES")
