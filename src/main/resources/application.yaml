@@ -20,6 +20,3 @@ mp:
       publickey:
         location: META-INF/resources/public.pem
       issuer: https://silent-passenger.com
-
-carbon-footprint-api/mp-rest/url: 'https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromCarTravel'
-carbonFootprint.apiKey: ${API.KEY.CARBONFOOTPRINT}

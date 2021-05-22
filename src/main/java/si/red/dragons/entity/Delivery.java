@@ -1,17 +1,17 @@
 package si.red.dragons.entity;
 
+import si.red.dragons.enums.DeliveryStatusEnum;
+
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Set;
 
 @Entity
-@Table(name = "TRANSFER")
-public class Transfer extends PanacheEntityExtended {
+@Table(name = "DELIVERY")
+public class Delivery {
 
     @Id
-    @Column(name = "ID_TRANSFER")
+    @Column(name = "ID_DELIVERY")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTransfer;
+    private Long idDelivery;
 
     @Column(name = "START_LOCATION")
     private String startLocation;
@@ -19,29 +19,28 @@ public class Transfer extends PanacheEntityExtended {
     @Column(name = "END_LOCATION")
     private String endLocation;
 
-    @Column(name = "PRICE")
-    private Float price;
-
     @Column(name = "DESCRIPTION")
     private String description;
 
-    @Column(name = "START_TIME")
-    private LocalDateTime startTime;
+    @Column(name = "STATUS")
+    @Convert(converter = DeliveryStatusEnum.JPAConverter.class)
+    private DeliveryStatusEnum status;
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Account.class)
     @JoinColumn(name = "ID_ACCOUNT")
     private Account account;
 
-    @Column(name = "DELIVERIES")
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "transfer", cascade = CascadeType.ALL)
-    private Set<Delivery> deliveries;
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Transfer.class)
+    @JoinColumn(name = "ID_TRANSFER")
+    private Transfer transfer;
 
-    public Long getIdTransfer() {
-        return idTransfer;
+
+    public Long getIdDelivery() {
+        return idDelivery;
     }
 
-    public void setIdTransfer(Long idTransfer) {
-        this.idTransfer = idTransfer;
+    public void setIdDelivery(Long idDelivery) {
+        this.idDelivery = idDelivery;
     }
 
     public String getStartLocation() {
@@ -60,28 +59,12 @@ public class Transfer extends PanacheEntityExtended {
         this.endLocation = endLocation;
     }
 
-    public Float getPrice() {
-        return price;
-    }
-
-    public void setPrice(Float price) {
-        this.price = price;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public LocalDateTime getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
     }
 
     public Account getAccount() {
@@ -92,11 +75,19 @@ public class Transfer extends PanacheEntityExtended {
         this.account = account;
     }
 
-    public Set<Delivery> getDeliveries() {
-        return deliveries;
+    public DeliveryStatusEnum getStatus() {
+        return status;
     }
 
-    public void setDeliveries(Set<Delivery> deliveries) {
-        this.deliveries = deliveries;
+    public void setStatus(DeliveryStatusEnum status) {
+        this.status = status;
+    }
+
+    public Transfer getTransfer() {
+        return transfer;
+    }
+
+    public void setTransfer(Transfer transfer) {
+        this.transfer = transfer;
     }
 }
