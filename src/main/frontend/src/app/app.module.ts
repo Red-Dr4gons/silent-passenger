@@ -12,6 +12,8 @@ import {RideComponent} from './ride/ride.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {ProfileComponent} from './profile/profile.component';
 import {LoginSignupDialog} from "./authentication/login-signup.dialog";
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {LeafletModule} from "@asymmetrik/ngx-leaflet";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthenticationService} from "./authentication/authentication.service";
 import {HttpClientModule} from "@angular/common/http";
@@ -34,7 +36,9 @@ import {HttpClientModule} from "@angular/common/http";
     MatOptionModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule,
+    LeafletModule
   ],
   providers: [AuthenticationService],
   bootstrap: [AppComponent]

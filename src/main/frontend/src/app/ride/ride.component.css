@@ -1,0 +1,25 @@
+.map {
+  height: 250px;
+  width: 96%;
+  padding: 10px;
+  float: left;
+}
+
+.content {
+  float: right;
+}
+
+.card-header {
+  padding: 10px;
+  background-color: #f8f9fc;
+}
+
+.card-title {
+  padding: 0px;
+}
+
+.card {
+  border-radius: 5px;
+  border: 1px solid #e3e6f0;
+  padding: 0px;
+}
