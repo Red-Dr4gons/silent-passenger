@@ -5,7 +5,14 @@
   <span>Silent passenger</span>
   <span class="spacer"></span>
 
-  <a *ngIf="loggedIn; else loggedOut" [routerLink]="'/profile'" mat-menu-item>Profile</a>
+  <div *ngIf="loggedIn; else loggedOut">
+    <button mat-icon-button [routerLink]="'/profile'">
+      <mat-icon>perm_identity</mat-icon>
+    </button>
+    <button mat-icon-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
   <ng-template #loggedOut>
     <button mat-icon-button (click)="openDialog()">
       <mat-icon>lock</mat-icon>
@@ -15,8 +22,8 @@
 <mat-sidenav-container>
   <mat-sidenav fullscreen #sidenav id="container">
     <mat-nav-list>
-      <a mat-list-item [routerLink]="'/'">Dashboard</a>
-      <a mat-list-item [routerLink]="'/create-account'"> Rides </a>
+      <a mat-list-item [routerLink]="'/dashboard'">Dashboard</a>
+      <a mat-list-item [routerLink]="'/rides'"> Rides </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

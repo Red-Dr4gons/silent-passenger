@@ -12,6 +12,9 @@ import {RideComponent} from './ride/ride.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {ProfileComponent} from './profile/profile.component';
 import {LoginSignupDialog} from "./authentication/login-signup.dialog";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {AuthenticationService} from "./authentication/authentication.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -22,15 +25,18 @@ import {LoginSignupDialog} from "./authentication/login-signup.dialog";
     LoginSignupDialog,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
     MatToolbarModule,
     MatOptionModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
