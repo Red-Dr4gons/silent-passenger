@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "DELIVERY")
-public class Delivery {
+public class Delivery extends PanacheEntityExtended {
 
     @Id
     @Column(name = "ID_DELIVERY")
@@ -25,10 +25,6 @@ public class Delivery {
     @Column(name = "STATUS")
     @Convert(converter = DeliveryStatusEnum.JPAConverter.class)
     private DeliveryStatusEnum status;
-
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Account.class)
-    @JoinColumn(name = "ID_ACCOUNT")
-    private Account account;
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Transfer.class)
     @JoinColumn(name = "ID_TRANSFER")
@@ -65,14 +61,6 @@ public class Delivery {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
     }
 
     public DeliveryStatusEnum getStatus() {

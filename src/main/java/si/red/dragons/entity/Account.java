@@ -105,4 +105,12 @@ public class Account extends PanacheEntityExtended {
     public void setRatings(Set<Rating> ratings) {
         this.ratings = ratings;
     }
+
+    public Set<Transfer> getTransfers() {
+        return transfers;
+    }
+
+    public void setTransfers(Set<Transfer> transfers) {
+        this.transfers = transfers;
+    }
 }

@@ -16,7 +16,7 @@ public enum DeliveryStatusEnum implements AEnum<String> {
 
     @Override
     public String value() {
-        return null;
+        return this.value;
     }
 
     @Converter

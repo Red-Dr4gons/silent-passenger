@@ -8,7 +8,7 @@ quarkus:
       driver: org.postgresql.Driver
   hibernate-orm:
     database:
-      generation: update
+      generation: drop-and-create
   resteasy:
     path: /api
   swagger-ui:
