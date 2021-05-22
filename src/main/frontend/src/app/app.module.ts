@@ -12,11 +12,12 @@ import {RideComponent} from './ride/ride.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {ProfileComponent} from './profile/profile.component';
 import {LoginSignupDialog} from "./authentication/login-signup.dialog";
-import { FlexLayoutModule } from '@angular/flex-layout';
+import {FlexLayoutModule} from '@angular/flex-layout';
 import {LeafletModule} from "@asymmetrik/ngx-leaflet";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthenticationService} from "./authentication/authentication.service";
 import {HttpClientModule} from "@angular/common/http";
+import {IsLoggedIn} from "./Guards/IsLoggedIn";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,9 @@ import {HttpClientModule} from "@angular/common/http";
     FlexLayoutModule,
     LeafletModule
   ],
-  providers: [AuthenticationService],
+  providers: [AuthenticationService,
+    IsLoggedIn],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

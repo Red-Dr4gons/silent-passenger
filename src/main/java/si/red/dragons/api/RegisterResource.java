@@ -2,7 +2,9 @@ package si.red.dragons.api;
 
 
 import si.red.dragons.dtos.AccountDTO;
+import si.red.dragons.dtos.ResponseDTO;
 import si.red.dragons.entity.Account;
+import si.red.dragons.enums.ResponseStatus;
 import si.red.dragons.mappers.AccountMapper;
 import si.red.dragons.utils.CryptoUtils;
 
@@ -23,13 +25,17 @@ public class RegisterResource {
     @Transactional
     public Response doRegistration(AccountDTO accountDTO) {
         Account account = Account.find("email", accountDTO.getEmail()).firstResult();
+        ResponseDTO response = new ResponseDTO();
         if (account != null) {
+            response.setStatus(ResponseStatus.FAILURE);
+            response.setMessage("Email already registered!");
             // User already exists
-            return Response.status(Response.Status.BAD_REQUEST).build();
+            return Response.ok(response).build();
         }
-        Account new_account = AccountMapper.INSTANCE.accountDTOToAccount(accountDTO);
-        new_account.setPassword(CryptoUtils.sha512(accountDTO.getPassword()));
-        new_account.save();
-        return Response.ok().build();
+        Account newAccount = AccountMapper.INSTANCE.accountDTOToAccount(accountDTO);
+        newAccount.setPassword(CryptoUtils.sha512(accountDTO.getPassword()));
+        newAccount.save();
+        response.setStatus(ResponseStatus.SUCCESS);
+        return Response.ok(response).build();
     }
 }

@@ -32,6 +32,10 @@ export class AuthenticationService {
     return !this.helper.isTokenExpired(token);
   }
 
+  setToken(jwt: string): void {
+    localStorage.setItem('jwt', jwt);
+  }
+
   getToken(): string {
     const jwt = localStorage.getItem('jwt');
     return jwt ? jwt : '';
