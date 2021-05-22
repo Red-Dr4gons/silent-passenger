@@ -1,21 +1,30 @@
 package si.red.dragons.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "TRANSFER")
 public class Transfer extends PanacheEntityExtended {
 
     @Id
+    @Column(name = "ID_TRANSFER")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTransfer;
+
+    @Column(name = "START_LOCATION")
     private String startLocation;
+
+    @Column(name = "END_LOCATION")
     private String endLocation;
+
+    @Column(name = "PRICE")
     private Float price;
+
+    @Column(name = "DESCRIPTION")
     private String description;
+
+    @Column(name = "START_TIME")
     private LocalDateTime startTime;
 
     public Long getIdTransfer() {

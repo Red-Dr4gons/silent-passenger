@@ -3,12 +3,18 @@ package si.red.dragons.entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "RATING")
 public class Rating extends PanacheEntityExtended {
 
     @Id
+    @Column(name = "ID_RATING")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idRating;
+
+    @Column(name = "VALUE")
     private Integer value;
+
+    @Column(name = "COMMNET")
     private Integer comment;
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Account.class)

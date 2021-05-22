@@ -7,20 +7,26 @@ import si.red.dragons.enums.FuelTypeEnum;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "VEHICLE")
 public class Vehicle extends PanacheEntityExtended {
 
     @Id
+    @Column(name = "ID_VEHICLE")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idVehicle;
 
+    @Column(name = "CAR_TYPE")
     @Convert(converter = CarTypeEnum.JPAConverter.class)
     private CarTypeEnum carType;
 
+    @Column(name = "FUEL_TYPE")
     @Convert(converter = FuelTypeEnum.JPAConverter.class)
     private CarTypeEnum fuelType;
 
+    @Column(name = "FUEL_CONSUMPTION")
     private Float fuelConsumption;
 
+    @Column(name = "ELECTRIC_LOCATION")
     @Convert(converter = ElectricLocationEnum.JPAConverter.class)
     private ElectricLocationEnum electricLocationEnum;
 
