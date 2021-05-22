@@ -3,12 +3,13 @@ import {RouterModule, Routes} from '@angular/router';
 import {RideComponent} from "./ride/ride.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {ProfileComponent} from "./profile/profile.component";
+import {IsLoggedIn} from "./Guards/IsLoggedIn";
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'rides', component: RideComponent},
-  {path: 'profile', component: ProfileComponent},
+  {path: 'rides', component: RideComponent, canActivate: [IsLoggedIn]},
+  {path: 'profile', component: ProfileComponent, canActivate: [IsLoggedIn]},
 ];
 
 @NgModule({
