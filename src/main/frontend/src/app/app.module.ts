@@ -8,16 +8,18 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatOptionModule} from "@angular/material/core";
 import {MaterialModule} from "./material-module";
-import { RideComponent } from './ride/ride.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProfileComponent } from './profile/profile.component';
+import {RideComponent} from './ride/ride.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {ProfileComponent} from './profile/profile.component';
+import {LoginSignupDialog} from "./authentication/login-signup.dialog";
 
 @NgModule({
   declarations: [
     AppComponent,
     RideComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    LoginSignupDialog,
   ],
   imports: [
     BrowserModule,
