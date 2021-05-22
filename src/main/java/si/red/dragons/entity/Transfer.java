@@ -27,6 +27,10 @@ public class Transfer extends PanacheEntityExtended {
     @Column(name = "START_TIME")
     private LocalDateTime startTime;
 
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Account.class)
+    @JoinColumn(name = "ID_ACCOUNT")
+    private Account account;
+
     public Long getIdTransfer() {
         return idTransfer;
     }
@@ -73,5 +77,13 @@ public class Transfer extends PanacheEntityExtended {
 
     public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }
