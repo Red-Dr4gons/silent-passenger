@@ -13,3 +13,6 @@ quarkus:
     path: /api
   swagger-ui:
     path: /api/docs
+
+carbon-footprint-api/mp-rest/url: 'https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromCarTravel'
+carbonFootprint.apiKey: ${API.KEY.CARBONFOOTPRINT}
