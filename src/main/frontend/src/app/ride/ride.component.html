@@ -2,10 +2,10 @@
   <mat-tab-group dynamicHeight>
     <mat-tab label="Transfers">
       <h1></h1><button mat-raised-button (click)="openAddTransportDialog()" class="add-btn">Driving somewhere?</button>
-        <mat-card class="card">
+        <mat-card class="card" *ngFor="let transfer of transfers" value="transfer">
           <mat-card-header class="card-header">
             <mat-card-title class="card-title">
-              Ljubljana - Koper
+              {{transfer.startLocCity}} - {{transfer.endLocCity}}
             </mat-card-title>
           </mat-card-header>
           <mat-divider></mat-divider>
@@ -20,9 +20,9 @@
                 </div>
               </div>
               <div fxFlex="60%;" class="content">
-                <p>Departure time: </p>
-                <p>Description: </p>
-                <p>Ride info: </p>
+                <p>Departure time: {{transfer.startTime}}</p>
+                <p>Description: {{transfer.description}}</p>
+                <p>Ride price: {{transfer.price}}€</p>
                 <p>Rider rating: 5 od 5 zvezdic hura!</p>
               </div>
             </div>

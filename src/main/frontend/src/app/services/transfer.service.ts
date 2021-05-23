@@ -12,21 +12,21 @@ export class TransferService {
   constructor(private http: HttpClient, private authService: AuthenticationService) {}
 
   getTransfers(): Promise<any> {
-    const url = `${this.apiUrl}/transfer`;
+    const url = `${this.apiUrl}transfer`;
     return this.http
       .get(url, this.authService.getHeaders())
       .toPromise();
   }
 
   create(data: any): Promise<any> {
-    const url = `${this.apiUrl}/transfer`;
+    const url = `${this.apiUrl}transfer`;
     return this.http
       .post(url, data, this.authService.getHeaders())
       .toPromise();
   }
 
   delete(id: number): Promise<any> {
-    const url = `${this.apiUrl}/transfer/${id}`;
+    const url = `${this.apiUrl}transfer/${id}`;
     return this.http
       .delete(url, this.authService.getHeaders())
       .toPromise();

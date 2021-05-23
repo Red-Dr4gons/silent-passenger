@@ -1,11 +1,13 @@
 package si.red.dragons.entity;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "ACCOUNT")
-public class Account extends PanacheEntityExtended {
+public class Account extends PanacheEntityExtended implements Serializable {
 
     @Id
     @Column(name = "ID_ACCOUNT")
@@ -38,6 +40,7 @@ public class Account extends PanacheEntityExtended {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "account", cascade = CascadeType.ALL)
     private Set<Vehicle> vehicles;
 
+    @JsonbTransient
     @Column(name = "TRANSFERS")
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "account", cascade = CascadeType.ALL)
     private Set<Transfer> transfers;

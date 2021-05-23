@@ -4,6 +4,7 @@ import {RouteService} from 'src/app/services/route.service';
 import {MatDialog} from "@angular/material/dialog";
 import {AddRideComponent} from "../add-ride/add-ride.component";
 import {AddDeliveryComponent} from "../add-delivery/add-delivery.component";
+import {TransferService} from "../services/transfer.service";
 
 @Component({
   selector: 'app-ride',
@@ -81,8 +82,9 @@ export class RideComponent implements OnInit {
     center: latLng([ 46.879966, -121.726909 ])
   };
 
+  transfers: any;
 
-  constructor(private routeService: RouteService,
+  constructor(private transferService: TransferService,
               public dialog: MatDialog) { }
 
   onMapReady(map: Map) {
@@ -90,6 +92,12 @@ export class RideComponent implements OnInit {
       padding: point(24, 24),
       maxZoom: 12,
       animate: true
+    });
+  }
+
+  getTransfers() {
+    this.transferService.getTransfers().then(res => {
+      this.transfers = res;
     });
   }
 
@@ -101,16 +109,8 @@ export class RideComponent implements OnInit {
     this.dialog.open(AddDeliveryComponent);
   }
 
-  private async getInstructionsList(): Promise<void> {
-    await this.routeService
-      .getInstructionsList(this.summit, this.paradise)
-      .then((resp) => {
-        console.log(resp);
-      });
-  }
-
   ngOnInit(): void {
-    this.getInstructionsList();
+    this.getTransfers();
   }
 
 }

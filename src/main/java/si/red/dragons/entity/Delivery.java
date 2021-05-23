@@ -1,6 +1,5 @@
 package si.red.dragons.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import si.red.dragons.enums.DeliveryStatusEnum;
 
 import javax.persistence.*;
@@ -35,56 +34,7 @@ public class Delivery extends PanacheEntityExtended {
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Transfer.class)
     @JoinColumn(name = "ID_TRANSFER")
-    @JsonIgnore
     private Transfer transfer;
-
-    public float getEmissionsSaved() {
-        return emissionsSaved;
-    }
-
-    public void setEmissionsSaved(float emissionsSaved) {
-        this.emissionsSaved = emissionsSaved;
-    }
-
-    public String getStartLocAddr() {
-        return startLocation.split(",")[0];
-    }
-
-    public String getStartLocCity() {
-        String cityAndCode = startLocation.split(",")[1];
-        String city = "";
-        for(String token : cityAndCode.split(" ")) {
-            city += token + " ";
-        }
-        return city;
-    }
-
-    public String getStartLocPostalCode() {
-        String cityAndCode = startLocation.split(",")[1];
-        int numOfSplits = cityAndCode.split(" ").length;
-        String code = cityAndCode.split(" ")[numOfSplits - 1];
-        return code;
-    }
-
-    public String getEndLocAddr() {
-        return endLocation.split(",")[0];
-    }
-
-    public String getEndLocCity() {
-        String cityAndCode = endLocation.split(",")[1];
-        String city = "";
-        for(String token : cityAndCode.split(" ")) {
-            city += token + " ";
-        }
-        return city;
-    }
-
-    public String getEndLocPostalCode() {
-        String cityAndCode = endLocation.split(",")[1];
-        int numOfSplits = cityAndCode.split(" ").length;
-        String code = cityAndCode.split(" ")[numOfSplits - 1];
-        return code;
-    }
 
     public Long getIdDelivery() {
         return idDelivery;

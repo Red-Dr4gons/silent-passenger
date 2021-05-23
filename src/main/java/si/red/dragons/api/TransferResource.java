@@ -4,7 +4,6 @@ import si.red.dragons.dtos.TransferDTO;
 import si.red.dragons.entity.Account;
 import si.red.dragons.entity.Transfer;
 import si.red.dragons.mappers.TransferMapper;
-import si.red.dragons.utils.GetPoints;
 
 import javax.annotation.security.RolesAllowed;
 import javax.transaction.Transactional;
@@ -13,7 +12,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
-import java.io.IOException;
 import java.util.List;
 
 @Path("/transfer")
@@ -39,18 +37,16 @@ public class TransferResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"user"})
-    public Response create(@Context SecurityContext sc, TransferDTO transferDTO) throws IOException {
-        Transfer transfer = TransferMapper.INSTANCE.transferDTOTotransfer(transferDTO);
+    public Response create(@Context SecurityContext sc, TransferDTO transferDTO) {
+        Account account = Account.find("email", sc.getUserPrincipal().getName()).firstResult();
+        Transfer transfer = TransferMapper.INSTANCE.transferDtoTotransfer(transferDTO, account);
 
         String email = sc.getUserPrincipal().getName();
         transfer.setAccount(Account.find("email", email).firstResult());
 
-        List points = new GetPoints().callAPI(transferDTO.getStartLocCity(), transferDTO.getStartLocAddr(), transferDTO.getStartLocPostalCode(),
-                transferDTO.getEndLocCity(), transferDTO.getEndLocAddr(), transferDTO.getEndLocPostalCode());
-
-        transfer.setPoints(points.toString());
-
-        transfer.save();
+        Account acc = Account.find("email", email).firstResult();
+        acc.getTransfers().add(transfer);
+        acc.save();
 
         return Response.ok().build();
     }
