@@ -1,8 +1,8 @@
 package si.red.dragons.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -33,11 +33,12 @@ public class Transfer extends PanacheEntityExtended {
     @Column(name = "START_TIME")
     private LocalDateTime startTime;
 
+    @JsonbTransient
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_ACCOUNT")
-    @JsonIgnore
     private Account account;
 
+    @JsonbTransient
     @Column(name = "DELIVERIES")
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "transfer", cascade = CascadeType.ALL)
     private Set<Delivery> deliveries;

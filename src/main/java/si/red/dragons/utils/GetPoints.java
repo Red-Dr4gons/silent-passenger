@@ -2,11 +2,11 @@ package si.red.dragons.utils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.testcontainers.shaded.okhttp3.HttpUrl;
-import org.testcontainers.shaded.okhttp3.OkHttpClient;
-import org.testcontainers.shaded.okhttp3.Request;
-import org.testcontainers.shaded.okhttp3.Response;
 
 import java.io.IOException;
 import java.util.ArrayList;

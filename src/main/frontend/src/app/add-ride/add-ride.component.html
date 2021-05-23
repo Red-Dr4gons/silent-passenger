@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>Add new ride</h2>
+<form class="form" (ngSubmit)="addRide()" [formGroup]="addRideForm" novalidate>
 <mat-dialog-content class="mat-typography">
-  <form class="form" (ngSubmit)="addRide()" [formGroup]="addRideForm" novalidate>
     <table class="full-width" cellspacing="0"><tr>
       Start location
       </tr><tr>
@@ -20,7 +20,7 @@
 
     <mat-form-field>
       <mat-label>Start time</mat-label>
-      <input matInput type="time" formControlName="startTime">
+      <input matInput type="datetime-local" formControlName="startTime">
     </mat-form-field>
 
     <table class="full-width" cellspacing="0"><tr>
@@ -62,9 +62,10 @@
       <input matInput type="number" formControlName="price">
     </mat-form-field>€</tr>
     </table>
-  </form>
+
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
   <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Add</button>
 </mat-dialog-actions>
+</form>
