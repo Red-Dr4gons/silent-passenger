@@ -1,1 +1,32 @@
-
+<mat-card class="card">
+  <mat-card-content class="parent">
+    <div fxLayout="row" fxLayout.xs="column">
+      <div fxFlex="60%;" fxLayoutAlign="center">
+        <div class="top-text" style="text-align: justify;">
+          <h1>Did you know, that consuming 1 litre of petrol produces 2.39kg of carbon dioxide.</h1>
+          <br>
+          <p>An average person travels around 20.000km by car in a year. With an average fuel consumption of 7.0l/100km
+            this produces more than 3 tons of carbon dioxide emissions. There are more than 1 billion people who drive
+            cars on daily basis. If we again make a quick calculation this leads us to a result of 3 billion tons of
+            carbon dioxide emission per year. But this is only produced by cars!</p>
+          <p>This terrifying number should encourage us to try and reduce the millage driven by a car when ever we can.
+          So, if you have a package to deliver don't drive it there by yourself but rather find someone who is already
+          making the trip and help save the environment for future generations. ;)</p>
+          <p>With the use of this service we already reduced carbon dioxide emissions by 40.21 tons which is the same as
+            the amount of carbon dioxide used by 695 trees in 20 years.</p>
+        </div>
+        <div class="text-down">
+          <h1 class="h1"><strong>40.21 tons = 695 trees</strong><img class="img-trees" src="../../assets/smreke2.png"></h1>
+        </div>
+      </div>
+      <div fxFlex="40%;">
+        <div class="chart-wrapper">
+          <canvas class="chart-canvas" id="chartId"></canvas>
+        </div>
+        <div class="chart-wrapper">
+          <canvas class="chart-canvas" id="chartCumulative"></canvas>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

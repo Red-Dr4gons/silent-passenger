@@ -21,6 +21,7 @@ import {IsLoggedIn} from "./Guards/IsLoggedIn";
 import {AddRideComponent} from './add-ride/add-ride.component';
 import {AddDeliveryComponent} from './add-delivery/add-delivery.component';
 import {VehicleComponent} from './vehicle/vehicle.component';
+import { ChartsModule } from 'ng2-charts';
 import { RideCardComponent } from './ride-card/ride-card.component';
 import { DeliveryCardComponent } from './delivery-card/delivery-card.component';
 
@@ -49,7 +50,8 @@ import { DeliveryCardComponent } from './delivery-card/delivery-card.component';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    LeafletModule
+    LeafletModule,
+    ChartsModule
   ],
   providers: [AuthenticationService,
     IsLoggedIn],
