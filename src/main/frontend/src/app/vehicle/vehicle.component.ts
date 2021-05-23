@@ -38,7 +38,7 @@ export class VehicleComponent {
       this.vehicleError = 'Missing some fields'
     }
     this.vehicleService.add(this.vehicleForm.value).then(res => {
-      this.dialog.closeAll();
+      // this.dialog.closeAll();
     }).catch(err => {
       this.vehicleError = 'Internal error. Try again.'
     })
