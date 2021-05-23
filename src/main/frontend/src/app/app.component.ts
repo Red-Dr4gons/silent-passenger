@@ -21,11 +21,7 @@ export class AppComponent {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(LoginSignupDialog);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.dialog.open(LoginSignupDialog);
   }
 
   logout() {

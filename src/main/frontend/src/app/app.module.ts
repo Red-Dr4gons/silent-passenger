@@ -19,6 +19,7 @@ import {AuthenticationService} from "./authentication/authentication.service";
 import {HttpClientModule} from "@angular/common/http";
 import {IsLoggedIn} from "./Guards/IsLoggedIn";
 import { AddRideComponent } from './add-ride/add-ride.component';
+import { VehicleComponent } from './vehicle/vehicle.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AddRideComponent } from './add-ride/add-ride.component';
     ProfileComponent,
     LoginSignupDialog,
     AddRideComponent,
+    VehicleComponent,
   ],
   imports: [
     HttpClientModule,

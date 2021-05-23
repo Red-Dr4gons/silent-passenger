@@ -1,0 +1,40 @@
+<mat-dialog-actions align="end">
+  <button mat-icon-button mat-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-dialog-actions>
+<mat-dialog-content class="mat-typography">
+  <form (ngSubmit)="add()" [formGroup]="vehicleForm" novalidate class="pt-5">
+    <mat-card>
+      <mat-card-content>
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Licence Plate" formControlName="plate">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Fuel Type</mat-label>
+            <mat-select formControlName="fuelType">
+              <mat-option *ngFor="let fuel of fuelTypes" [value]="fuel.value">
+                {{fuel.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input type="number" matInput placeholder="Fuel Consumption" formControlName="fuelConsumption">
+          </mat-form-field>
+        </p>
+        <p *ngIf="vehicleError" class="error">
+          {{ vehicleError }}
+        </p>
+        <div class="button">
+          <button type="submit" mat-button>Add</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</mat-dialog-content>
+
