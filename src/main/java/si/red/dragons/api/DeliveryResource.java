@@ -6,6 +6,7 @@ import si.red.dragons.entity.Delivery;
 import si.red.dragons.entity.Transfer;
 import si.red.dragons.enums.DeliveryStatusEnum;
 import si.red.dragons.mappers.DeliveryMapper;
+import si.red.dragons.utils.GetPoints;
 
 import javax.annotation.security.RolesAllowed;
 import javax.transaction.Transactional;
@@ -14,6 +15,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -48,8 +50,13 @@ public class DeliveryResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"user"})
-    public Response create(@Context SecurityContext sc, DeliveryDTO deliveryDTO) {
+    public Response create(@Context SecurityContext sc, DeliveryDTO deliveryDTO) throws IOException {
         Delivery delivery = DeliveryMapper.INSTANCE.deliveryDTOToDelivery(deliveryDTO);
+
+        List points = new GetPoints().callAPI(deliveryDTO.getStartLocCity(), deliveryDTO.getStartLocAddr(), deliveryDTO.getStartLocPostalCode(),
+                deliveryDTO.getEndLocCity(), deliveryDTO.getEndLocAddr(), deliveryDTO.getEndLocPostalCode());
+
+        delivery.setPoints(points.toString());
 
         delivery.save();
         return Response.ok().build();

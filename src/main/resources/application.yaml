@@ -20,3 +20,7 @@ mp:
       publickey:
         location: public.pem
       issuer: https://silent-passenger.com
+
+api:
+  key: ${RAPID.API.GEOCODE.KEY}
+  apiHost: ${RAPID.API.GEOCODE.HOST}

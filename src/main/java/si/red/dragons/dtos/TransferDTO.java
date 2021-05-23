@@ -12,6 +12,7 @@ public class TransferDTO {
     private String endLocAddr;
     private String endLocCity;
     private String endLocPostalCode;
+    private String points;
     private Vehicle vehicle;
     private String description;
     private Float price;
@@ -100,5 +101,13 @@ public class TransferDTO {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+
+    public String getPoints() {
+        return points;
+    }
+
+    public void setPoints(String points) {
+        this.points = points;
     }
 }

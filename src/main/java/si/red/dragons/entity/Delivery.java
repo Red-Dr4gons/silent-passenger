@@ -20,6 +20,9 @@ public class Delivery extends PanacheEntityExtended {
     @Column(name = "END_LOCATION")
     private String endLocation;
 
+    @Column(name = "POINTS")
+    private String points;
+
     @Column(name = "DESCRIPTION")
     private String description;
 
@@ -32,6 +35,45 @@ public class Delivery extends PanacheEntityExtended {
     @JsonIgnore
     private Transfer transfer;
 
+    public String getStartLocAddr() {
+        return startLocation.split(",")[0];
+    }
+
+    public String getStartLocCity() {
+        String cityAndCode = startLocation.split(",")[1];
+        String city = "";
+        for(String token : cityAndCode.split(" ")) {
+            city += token + " ";
+        }
+        return city;
+    }
+
+    public String getStartLocPostalCode() {
+        String cityAndCode = startLocation.split(",")[1];
+        int numOfSplits = cityAndCode.split(" ").length;
+        String code = cityAndCode.split(" ")[numOfSplits - 1];
+        return code;
+    }
+
+    public String getEndLocAddr() {
+        return endLocation.split(",")[0];
+    }
+
+    public String getEndLocCity() {
+        String cityAndCode = endLocation.split(",")[1];
+        String city = "";
+        for(String token : cityAndCode.split(" ")) {
+            city += token + " ";
+        }
+        return city;
+    }
+
+    public String getEndLocPostalCode() {
+        String cityAndCode = endLocation.split(",")[1];
+        int numOfSplits = cityAndCode.split(" ").length;
+        String code = cityAndCode.split(" ")[numOfSplits - 1];
+        return code;
+    }
 
     public Long getIdDelivery() {
         return idDelivery;
@@ -79,5 +121,13 @@ public class Delivery extends PanacheEntityExtended {
 
     public void setTransfer(Transfer transfer) {
         this.transfer = transfer;
+    }
+
+    public String getPoints() {
+        return points;
+    }
+
+    public void setPoints(String points) {
+        this.points = points;
     }
 }

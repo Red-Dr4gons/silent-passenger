@@ -21,6 +21,9 @@ public class Transfer extends PanacheEntityExtended {
     @Column(name = "END_LOCATION")
     private String endLocation;
 
+    @Column(name = "POINTS")
+    private String points;
+
     @Column(name = "PRICE")
     private Float price;
 
@@ -66,6 +69,26 @@ public class Transfer extends PanacheEntityExtended {
 
     public String getStartLocPostalCode() {
         String cityAndCode = startLocation.split(",")[1];
+        int numOfSplits = cityAndCode.split(" ").length;
+        String code = cityAndCode.split(" ")[numOfSplits - 1];
+        return code;
+    }
+
+    public String getEndLocAddr() {
+        return endLocation.split(",")[0];
+    }
+
+    public String getEndLocCity() {
+        String cityAndCode = endLocation.split(",")[1];
+        String city = "";
+        for(String token : cityAndCode.split(" ")) {
+            city += token + " ";
+        }
+        return city;
+    }
+
+    public String getEndLocPostalCode() {
+        String cityAndCode = endLocation.split(",")[1];
         int numOfSplits = cityAndCode.split(" ").length;
         String code = cityAndCode.split(" ")[numOfSplits - 1];
         return code;
@@ -121,5 +144,13 @@ public class Transfer extends PanacheEntityExtended {
 
     public void setDeliveries(Set<Delivery> deliveries) {
         this.deliveries = deliveries;
+    }
+
+    public String getPoints() {
+        return points;
+    }
+
+    public void setPoints(String points) {
+        this.points = points;
     }
 }
