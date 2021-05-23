@@ -3,6 +3,7 @@ import {icon, latLng, Map, marker, point, polyline, tileLayer} from "leaflet";
 import {RouteService} from 'src/app/services/route.service';
 import {MatDialog} from "@angular/material/dialog";
 import {AddRideComponent} from "../add-ride/add-ride.component";
+import {AddDeliveryComponent} from "../add-delivery/add-delivery.component";
 
 @Component({
   selector: 'app-ride',
@@ -92,8 +93,12 @@ export class RideComponent implements OnInit {
     });
   }
 
-  openAddDialog() {
+  openAddTransportDialog() {
     this.dialog.open(AddRideComponent);
+  }
+
+  openAddDeliveryDialog() {
+    this.dialog.open(AddDeliveryComponent);
   }
 
   private async getInstructionsList(): Promise<void> {
