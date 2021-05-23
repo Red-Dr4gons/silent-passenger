@@ -1,7 +1,5 @@
 package si.red.dragons.entity;
 
-import si.red.dragons.enums.CarTypeEnum;
-import si.red.dragons.enums.ElectricLocationEnum;
 import si.red.dragons.enums.FuelTypeEnum;
 
 import javax.persistence.*;
