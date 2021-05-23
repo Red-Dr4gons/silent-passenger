@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Vehicle} from "../models/vehicle";
 import {TransferService} from "../services/transfer.service";
+import {VehicleComponent} from "../vehicle/vehicle.component";
+import {AccountService} from "../services/account.service";
+import {VehicleService} from "../services/vehicle.service";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-add-ride',
@@ -9,6 +13,13 @@ import {TransferService} from "../services/transfer.service";
   styleUrls: ['./add-ride.component.css']
 })
 export class AddRideComponent {
+
+  constructor(private transferService: TransferService,
+              private vehicleService: VehicleService,
+              public dialog: MatDialog){
+    this.getData();
+  }
+
   transferError = '';
   addRideForm = new FormGroup({
     startLocAddr: new FormControl('', [Validators.required]),
@@ -25,16 +36,25 @@ export class AddRideComponent {
 
   vehicles: Vehicle[] | undefined;
 
-  constructor(private transferService: TransferService) {
-  }
-
   addRide() {
-    this.transferService.create(this.addRideForm?.value).then(() => {
-      this.transferError = 'Transfer was created successfully!';
-    }).catch(err => this.transferError = 'Internal error. Try again!');
+    console.log("Log");
+    console.log(this.addRideForm.value);
+    // this.transferService.create(this.addRideForm?.value).then(() => {
+    //   this.transferError = 'Transfer was created successfully!';
+    // }).catch(err => this.transferError = 'Internal error. Try again!');
   }
 
-  getVehicles() {
+  openVehicleDialog() {
+    const dialogRef = this.dialog.open(VehicleComponent);
 
+    dialogRef.afterClosed().subscribe(result => {
+      this.getData();
+    });
+  }
+
+  getData() {
+    this.vehicleService.getMyVehicles().then(res => {
+      this.vehicles = res;
+    })
   }
 }

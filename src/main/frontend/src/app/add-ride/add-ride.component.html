@@ -48,7 +48,11 @@
           {{vehicle.plate}}
         </mat-option>
       </mat-select>
-    </mat-form-field></tr>
+    </mat-form-field>
+      <button mat-button color="primary" (click)="openVehicleDialog()">
+        <mat-icon>add</mat-icon>
+        Add new
+      </button></tr>
     <tr><mat-form-field class="full-width">
       <mat-label>Description</mat-label>
       <input matInput type="text" formControlName="description">
