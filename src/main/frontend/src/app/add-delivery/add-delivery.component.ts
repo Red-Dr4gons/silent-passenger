@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {DeliveryService} from "../services/delivery.service";
 
 @Component({
   selector: 'app-add-delivery',
@@ -15,11 +16,15 @@ export class AddDeliveryComponent {
     endLocAddr: new FormControl('', [Validators.required]),
     endLocCity: new FormControl('', [Validators.required]),
     endLocPostalCode: new FormControl('', [Validators.required]),
-    status: new FormControl(''),
     description: new FormControl('', [Validators.required])
   })
 
+  constructor(private deliveryService: DeliveryService) {
+  }
+
   addDelivery() {
-    console.log(this.addDeliveryForm?.value);
+    this.deliveryService.create(this.addDeliveryForm?.value).then(() => {
+      this.deliveryError = 'Ride was created successfully!';
+    }).catch(err => this.deliveryError = 'Internal error. Try again!');
   }
 }

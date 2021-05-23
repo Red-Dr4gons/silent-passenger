@@ -19,7 +19,7 @@ public class Delivery extends PanacheEntityExtended {
     @Column(name = "END_LOCATION")
     private String endLocation;
 
-    @Column(name = "POINTS")
+    @Column(length = 65535, columnDefinition = "Text", name = "POINTS")
     private String points;
 
     @Column(name = "EMISSIONS_SAVED")
@@ -90,5 +90,49 @@ public class Delivery extends PanacheEntityExtended {
 
     public void setPoints(String points) {
         this.points = points;
+    }
+
+    public float getEmissionsSaved() {
+        return emissionsSaved;
+    }
+
+    public void setEmissionsSaved(float emissionsSaved) {
+        this.emissionsSaved = emissionsSaved;
+    }
+
+    public String getStartLocCity() {
+        String cityAndCode = startLocation.split(",")[1];
+        String city = "";
+        for (String token : cityAndCode.split(" ")) {
+            city += token + " ";
+        }
+        return city;
+    }
+
+    public String getStartLocPostalCode() {
+        String cityAndCode = startLocation.split(",")[1];
+        int numOfSplits = cityAndCode.split(" ").length;
+        String code = cityAndCode.split(" ")[numOfSplits - 1];
+        return code;
+    }
+
+    public String getEndLocAddr() {
+        return endLocation.split(",")[0];
+    }
+
+    public String getEndLocCity() {
+        String cityAndCode = endLocation.split(",")[1];
+        String city = "";
+        for (String token : cityAndCode.split(" ")) {
+            city += token + " ";
+        }
+        return city;
+    }
+
+    public String getEndLocPostalCode() {
+        String cityAndCode = endLocation.split(",")[1];
+        int numOfSplits = cityAndCode.split(" ").length;
+        String code = cityAndCode.split(" ")[numOfSplits - 1];
+        return code;
     }
 }

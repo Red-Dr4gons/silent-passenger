@@ -36,8 +36,6 @@ export class AddRideComponent {
   vehicles: Vehicle[] | undefined;
 
   addRide() {
-    console.log("Log");
-    console.log(this.addRideForm.value);
     this.transferService.create(this.addRideForm?.value).then(() => {
       this.transferError = 'Transfer was created successfully!';
     }).catch(err => this.transferError = 'Internal error. Try again!');

@@ -10,29 +10,8 @@
     <mat-tab label="Deliveries">
       <h1></h1>
       <button mat-raised-button (click)="openAddDeliveryDialog()" class="add-btn">Need a ride?</button>
-      <mat-card class="card">
-        <mat-card-header class="card-header">
-          <mat-card-title class="card-title">
-            Ljubljana - Koper
-          </mat-card-title>
-        </mat-card-header>
-        <mat-divider></mat-divider>
-        <!--        <mat-card-content>-->
-        <!--          <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center">-->
-        <!--            <div fxFlex="40%;">-->
-        <!--              <div class="map"-->
-        <!--                   leaflet-->
-        <!--                   (leafletMapReady)="onMapReady($event)"-->
-        <!--                   [leafletOptions]="options"-->
-        <!--                   [leafletLayersControl]="layersControl">-->
-        <!--              </div>-->
-        <!--            </div>-->
-        <!--            <div fxFlex="60%;" class="content">-->
-        <!--              <p>Status: </p>-->
-        <!--              <p>Description: </p>-->
-        <!--            </div>-->
-        <!--          </div>-->
-        <!--        </mat-card-content>-->
+      <mat-card class="card" *ngFor="let delivery of deliveries" value="delivery">
+        <app-delivery-card [delivery]="delivery"></app-delivery-card>
       </mat-card>
     </mat-tab>
   </mat-tab-group>

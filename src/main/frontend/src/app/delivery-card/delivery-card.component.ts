@@ -1,14 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {icon, latLng, Map, marker, point, polyline, tileLayer} from "leaflet";
+import {icon, Map, marker, point, polyline, tileLayer} from "leaflet";
 
 @Component({
-  selector: 'app-ride-card',
-  templateUrl: './ride-card.component.html',
-  styleUrls: ['./ride-card.component.css']
+  selector: 'app-delivery-card',
+  templateUrl: './delivery-card.component.html',
+  styleUrls: ['./delivery-card.component.css']
 })
-export class RideCardComponent implements OnInit {
-  @Input() transfer: any | undefined;
-
+export class DeliveryCardComponent implements OnInit {
+  @Input() delivery: any | undefined;
   route: any;
   layersControl: any;
   options: any;
@@ -27,7 +26,7 @@ export class RideCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const path = this.transfer.points.split(";")
+    const path = this.delivery.points.split(";")
     path.pop();
     // Marker for the top of Mt. Ranier
     const summit = marker([+path[0].split(',')[0], +path[0].split(',')[1]], {
@@ -38,7 +37,6 @@ export class RideCardComponent implements OnInit {
         shadowUrl: 'leaflet/marker-shadow.png'
       })
     });
-
     const paradise = marker([+path[path.length - 1].split(',')[0], +path[path.length - 1].split(',')[1]], {
       icon: icon({
         iconSize: [25, 41],
@@ -72,7 +70,7 @@ export class RideCardComponent implements OnInit {
     this.options = {
       layers: [this.streetMaps, this.route, summit, paradise],
       zoom: 7,
-      center: latLng([46.879966, -121.726909])
+      center: summit.getLatLng()
     };
   }
 

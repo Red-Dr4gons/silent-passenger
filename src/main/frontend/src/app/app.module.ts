@@ -22,6 +22,7 @@ import {AddRideComponent} from './add-ride/add-ride.component';
 import {AddDeliveryComponent} from './add-delivery/add-delivery.component';
 import {VehicleComponent} from './vehicle/vehicle.component';
 import { RideCardComponent } from './ride-card/ride-card.component';
+import { DeliveryCardComponent } from './delivery-card/delivery-card.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { RideCardComponent } from './ride-card/ride-card.component';
     VehicleComponent,
     AddDeliveryComponent,
     RideCardComponent,
+    DeliveryCardComponent,
   ],
   imports: [
     HttpClientModule,

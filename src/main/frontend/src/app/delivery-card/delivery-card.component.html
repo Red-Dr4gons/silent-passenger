@@ -1,0 +1,22 @@
+<mat-card-header class="card-header">
+  <mat-card-title class="card-title">
+    {{delivery.startLocCity}} - {{delivery.endLocCity}}
+  </mat-card-title>
+</mat-card-header>
+<mat-divider></mat-divider>
+<mat-card-content>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center">
+    <div fxFlex="40%;">
+      <div class="map"
+           leaflet
+           (leafletMapReady)="onMapReady($event)"
+           [leafletOptions]="options"
+           [leafletLayersControl]="layersControl">
+      </div>
+    </div>
+    <div fxFlex="60%;" class="content">
+      <p>Description: {{delivery.description}}</p>
+      <p>Estimated emissions saved: {{delivery.emissionsSaved}} kg</p>
+    </div>
+  </div>
+</mat-card-content>
