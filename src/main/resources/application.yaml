@@ -24,3 +24,8 @@ mp:
 api:
   key: ${RAPID.API.GEOCODE.KEY}
   apiHost: ${RAPID.API.GEOCODE.HOST}
+
+geocoding/mp-rest/url: https://forward-reverse-geocoding.p.rapidapi.com/v1/forward
+geocoding/mp-rest/scope: javax.inject.Singleton
+router/mp-rest/url: http://router.project-osrm.org/route/v1/car/
+router/mp-rest/scope: javax.inject.Singleton

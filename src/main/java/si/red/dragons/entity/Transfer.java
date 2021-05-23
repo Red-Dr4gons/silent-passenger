@@ -2,7 +2,6 @@ package si.red.dragons.entity;
 
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -21,7 +20,7 @@ public class Transfer extends PanacheEntityExtended {
     @Column(name = "END_LOCATION")
     private String endLocation;
 
-    @Column(name = "POINTS")
+    @Column(length = 65535, columnDefinition = "Text", name = "POINTS")
     private String points;
 
     @Column(name = "PRICE")

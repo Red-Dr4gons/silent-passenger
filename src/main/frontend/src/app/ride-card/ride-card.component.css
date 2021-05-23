@@ -1,0 +1,38 @@
+.map {
+  height: 250px;
+  width: 100%;
+}
+
+.column {
+  width: 100%;
+}
+
+h1 {
+  display: inline-block;
+  height: 30px;
+}
+
+.add-btn {
+  margin-top: 5px;
+  float: right;
+}
+
+.content {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.card-header {
+  padding: 10px;
+  background-color: #f8f9fc;
+}
+
+.card-title {
+  margin: 0px !important;
+}
+
+.card {
+  border-radius: 5px;
+  border: 1px solid #e3e6f0;
+  padding: 0px;
+}

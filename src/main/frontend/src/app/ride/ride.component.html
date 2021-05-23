@@ -1,36 +1,15 @@
 <mat-dialog-content class="mat-typography">
-  <mat-tab-group dynamicHeight>
+  <mat-tab-group>
     <mat-tab label="Transfers">
-      <h1></h1><button mat-raised-button (click)="openAddTransportDialog()" class="add-btn">Driving somewhere?</button>
-        <mat-card class="card" *ngFor="let transfer of transfers" value="transfer">
-          <mat-card-header class="card-header">
-            <mat-card-title class="card-title">
-              {{transfer.startLocCity}} - {{transfer.endLocCity}}
-            </mat-card-title>
-          </mat-card-header>
-          <mat-divider></mat-divider>
-          <mat-card-content>
-            <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center">
-              <div fxFlex="40%;">
-                <div class="map"
-                     leaflet
-                     (leafletMapReady)="onMapReady($event)"
-                     [leafletOptions]="options"
-                     [leafletLayersControl]="layersControl">
-                </div>
-              </div>
-              <div fxFlex="60%;" class="content">
-                <p>Departure time: {{transfer.startTime}}</p>
-                <p>Description: {{transfer.description}}</p>
-                <p>Ride price: {{transfer.price}}€</p>
-                <p>Rider rating: 5 od 5 zvezdic hura!</p>
-              </div>
-            </div>
-          </mat-card-content>
-        </mat-card>
+      <h1></h1>
+      <button mat-raised-button (click)="openAddTransportDialog()" class="add-btn">Driving somewhere?</button>
+      <mat-card class="card" *ngFor="let transfer of transfers" value="transfer">
+        <app-ride-card [transfer]="transfer"></app-ride-card>
+      </mat-card>
     </mat-tab>
     <mat-tab label="Deliveries">
-      <h1></h1><button mat-raised-button (click)="openAddDeliveryDialog()" class="add-btn">Need a ride?</button>
+      <h1></h1>
+      <button mat-raised-button (click)="openAddDeliveryDialog()" class="add-btn">Need a ride?</button>
       <mat-card class="card">
         <mat-card-header class="card-header">
           <mat-card-title class="card-title">
@@ -38,22 +17,22 @@
           </mat-card-title>
         </mat-card-header>
         <mat-divider></mat-divider>
-        <mat-card-content>
-          <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center">
-            <div fxFlex="40%;">
-              <div class="map"
-                   leaflet
-                   (leafletMapReady)="onMapReady($event)"
-                   [leafletOptions]="options"
-                   [leafletLayersControl]="layersControl">
-              </div>
-            </div>
-            <div fxFlex="60%;" class="content">
-              <p>Status: </p>
-              <p>Description: </p>
-            </div>
-          </div>
-        </mat-card-content>
+        <!--        <mat-card-content>-->
+        <!--          <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center">-->
+        <!--            <div fxFlex="40%;">-->
+        <!--              <div class="map"-->
+        <!--                   leaflet-->
+        <!--                   (leafletMapReady)="onMapReady($event)"-->
+        <!--                   [leafletOptions]="options"-->
+        <!--                   [leafletLayersControl]="layersControl">-->
+        <!--              </div>-->
+        <!--            </div>-->
+        <!--            <div fxFlex="60%;" class="content">-->
+        <!--              <p>Status: </p>-->
+        <!--              <p>Description: </p>-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </mat-card-content>-->
       </mat-card>
     </mat-tab>
   </mat-tab-group>

@@ -21,6 +21,7 @@ import {IsLoggedIn} from "./Guards/IsLoggedIn";
 import {AddRideComponent} from './add-ride/add-ride.component';
 import {AddDeliveryComponent} from './add-delivery/add-delivery.component';
 import {VehicleComponent} from './vehicle/vehicle.component';
+import { RideCardComponent } from './ride-card/ride-card.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {VehicleComponent} from './vehicle/vehicle.component';
     AddRideComponent,
     VehicleComponent,
     AddDeliveryComponent,
+    RideCardComponent,
   ],
   imports: [
     HttpClientModule,

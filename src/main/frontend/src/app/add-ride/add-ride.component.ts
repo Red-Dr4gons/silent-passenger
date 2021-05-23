@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Vehicle} from "../models/vehicle";
 import {TransferService} from "../services/transfer.service";
@@ -38,9 +38,9 @@ export class AddRideComponent {
   addRide() {
     console.log("Log");
     console.log(this.addRideForm.value);
-    // this.transferService.create(this.addRideForm?.value).then(() => {
-    //   this.transferError = 'Transfer was created successfully!';
-    // }).catch(err => this.transferError = 'Internal error. Try again!');
+    this.transferService.create(this.addRideForm?.value).then(() => {
+      this.transferError = 'Transfer was created successfully!';
+    }).catch(err => this.transferError = 'Internal error. Try again!');
   }
 
   openVehicleDialog() {

@@ -20,6 +20,7 @@ export class TransferService {
 
   create(data: any): Promise<any> {
     const url = `${this.apiUrl}transfer`;
+    console.log(url)
     return this.http
       .post(url, data, this.authService.getHeaders())
       .toPromise();
