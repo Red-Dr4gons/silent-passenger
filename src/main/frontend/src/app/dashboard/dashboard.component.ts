@@ -51,7 +51,7 @@ export class DashboardComponent implements OnInit{
           data: [0, 1.5, 3.66, 6.42, 11.98, 27.66, 40.21],
           backgroundColor: 'rgb(54, 162, 235)'
         }],
-        labels: ['November 2021', 'December 2021', 'January 2021', 'February 2021', 'March 2021', 'April 2021', 'May 2021']
+        labels: ['November 2020', 'December 2020', 'January 2021', 'February 2021', 'March 2021', 'April 2021', 'May 2021']
       },
       options: {
         maintainAspectRatio: false,
