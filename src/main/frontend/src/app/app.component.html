@@ -22,8 +22,8 @@
 <mat-sidenav-container>
   <mat-sidenav fullscreen #sidenav id="container">
     <mat-nav-list>
-      <a mat-list-item [routerLink]="'/dashboard'">Dashboard</a>
-      <a mat-list-item [routerLink]="'/rides'"> Rides </a>
+      <a mat-list-item routerLinkActive="active" [routerLink]="'/dashboard'">Dashboard</a>
+      <a mat-list-item routerLinkActive="active" [routerLink]="'/rides'"> Rides </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
