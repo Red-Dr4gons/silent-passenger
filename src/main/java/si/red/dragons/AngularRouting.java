@@ -14,13 +14,22 @@ import java.io.IOException;
 public class AngularRouting extends HttpFilter {
     private static final long serialVersionUID = 6658181742256174754L;
 
+    private String[] paths = {
+            "(^\\/dashboard(\\/)?$)",
+            "(^\\/profile[\\/]?$)",
+            "(^\\/rides[\\/]?$)"
+
+    };
+
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
 
-        if (!request.getRequestURI().contains("/api")) {
-            req.getRequestDispatcher("/index.html").forward(request, response);
+        for (String pattern : paths) {
+            if (request.getRequestURI().matches(pattern)) {
+                request.getRequestDispatcher("/index.html").forward(request, response);
+            }
         }
 
         chain.doFilter(request, response);
