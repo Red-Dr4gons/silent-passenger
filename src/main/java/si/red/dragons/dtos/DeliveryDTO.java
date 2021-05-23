@@ -14,6 +14,15 @@ public class DeliveryDTO {
     private String description;
     private DeliveryStatusEnum status;
     private String transferId;
+    private float emissionsSaved;
+
+    public float getEmissionsSaved() {
+        return emissionsSaved;
+    }
+
+    public void setEmissionsSaved(float emissionsSaved) {
+        this.emissionsSaved = emissionsSaved;
+    }
 
     public String getStartLocation() {
         return startLocAddr + ", " + startLocCity + " " + startLocPostalCode;

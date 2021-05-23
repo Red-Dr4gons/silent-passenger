@@ -23,6 +23,9 @@ public class Delivery extends PanacheEntityExtended {
     @Column(name = "POINTS")
     private String points;
 
+    @Column(name = "EMISSIONS_SAVED")
+    private float emissionsSaved;
+
     @Column(name = "DESCRIPTION")
     private String description;
 
@@ -34,6 +37,14 @@ public class Delivery extends PanacheEntityExtended {
     @JoinColumn(name = "ID_TRANSFER")
     @JsonIgnore
     private Transfer transfer;
+
+    public float getEmissionsSaved() {
+        return emissionsSaved;
+    }
+
+    public void setEmissionsSaved(float emissionsSaved) {
+        this.emissionsSaved = emissionsSaved;
+    }
 
     public String getStartLocAddr() {
         return startLocation.split(",")[0];

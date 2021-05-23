@@ -5,10 +5,13 @@ public class CarbonEmission {
 
     }
 
-    public static float calcualteEmission(String fuel_type, Float consumption, Float kilometers){
+    public static float calcualteEmission(String fuelType, Float consumption, Float kilometers){
         Float kgsPerLiter;
-        if(fuel_type == "petrol"){
+        if(fuelType.equals("petrol")){
             kgsPerLiter = 2.39f;
+        }
+        else if (fuelType.equals("electric")){
+            return 0;
         }
         else{
             kgsPerLiter = 2.62f;
