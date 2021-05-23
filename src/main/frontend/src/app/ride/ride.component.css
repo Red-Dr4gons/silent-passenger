@@ -9,9 +9,11 @@
 
 h1 {
   display: inline-block;
+  height: 30px;
 }
 
 .add-btn {
+  margin-top: 5px;
   float: right;
 }
 
